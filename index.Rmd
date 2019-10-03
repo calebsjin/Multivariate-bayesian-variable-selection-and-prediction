@@ -1,5 +1,5 @@
 ---
-title: "Multivariate bayesian variable selection and prediction"
+title: "Multivariate Bayesian variable selection and prediction"
 author: "Caleb Jin"
 date: "2-10-2019"
 site: bookdown::bookdown_site
