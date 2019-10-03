@@ -44,7 +44,7 @@ html_document: newcommandault
 \newcommand\diag{{\rm diag}}
 \newcommand{\tr}{{\text tr}}
 
-# Multivariate Bayesian variable selection and prediction
+# Multivariate Bayesian Variable Selection and Prediction
 
 Consider a multivariate vairable regression model,
 $$\uY = \uX\uB + \uE,$$

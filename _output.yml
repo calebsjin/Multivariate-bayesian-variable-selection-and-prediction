@@ -3,7 +3,7 @@ bookdown::gitbook:
   config:
     toc:
       before: |
-        <li><a href="./">Multivariate Bayesian variable selection and prediction</a></li>
+        <li><a href="./">Multivariate Bayesian Variable Selection and Prediction</a></li>
       after: |
         <li><a href="https://www.sjin.name" target="blank">Caleb Jin|金时强</a></li>
     download: ["pdf", "epub"]
