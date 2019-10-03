@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 2 Multivariate bayesian variable selection and prediction | Multivariate bayesian variable selection and prediction</title>
+  <meta name="description" content="Chapter 2 Multivariate bayesian variable selection and prediction | Multivariate bayesian variable selection and prediction" />
+  <meta name="generator" content="bookdown 0.13.2 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 2 Multivariate bayesian variable selection and prediction | Multivariate bayesian variable selection and prediction" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 2 Multivariate bayesian variable selection and prediction | Multivariate bayesian variable selection and prediction" />
+  
+  
+  
+
+<meta name="author" content="Caleb Jin" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="index.html"/>
+<link rel="next" href="references.html"/>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Multivariate bayesian variable selection and prediction</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Foreword</a></li>
+<li class="chapter" data-level="2" data-path="multivariate-bayesian-variable-selection-and-prediction.html"><a href="multivariate-bayesian-variable-selection-and-prediction.html"><i class="fa fa-check"></i><b>2</b> Multivariate bayesian variable selection and prediction</a></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li><a href="https://www.sjin.name" target="blank">Caleb Jin|金时强</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Multivariate bayesian variable selection and prediction</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="multivariate-bayesian-variable-selection-and-prediction" class="section level1">
+<h1><span class="header-section-number">Chapter 2</span> Multivariate bayesian variable selection and prediction</h1>
+<p>Consider a multivariate vairable regression model,
+<span class="math display">\[{\bf Y}= {\bf X}{\bf B}+ {\bf E},\]</span>
+where <span class="math inline">\({\bf Y}=({\bf y}_1,{\bf y}_2,\ldots,{\bf y}_n)^{{\top}}\)</span> is the <span class="math inline">\(n \times q\)</span> response matrix, <span class="math inline">\({\bf X}= ({\bf x}_1,\ldots,{\bf x}_p)\)</span> is the <span class="math inline">\(n\times p\)</span> design matrix, <span class="math inline">\({\bf B}= ({\boldsymbol \beta}_1,\ldots,{\boldsymbol \beta}_p)^{{\top}}\)</span> is a <span class="math inline">\(p\times q\)</span> unknown coefficient matrix, and <span class="math inline">\({\bf E}= ({\bf e}_1,{\bf e}_2,\ldots,{\bf e}_n)^{{\top}}\)</span> is an <span class="math inline">\(n\times q\)</span> error matrix with <span class="math inline">\({\bf e}_i \overset{i.i.d}{\sim}\mathcal{N}_q({\bf 0}, {\boldsymbol \Sigma})\)</span>. To identify the variables selected among <span class="math inline">\(p\)</span> regressors, <span class="citation">(Brown and Vannucci <a href="#ref-Brown">1998</a>)</span> introduced a latent binary vector <span class="math inline">\({\boldsymbol \xi}= (\xi_1,\ldots, \xi_p)^{{\top}}\)</span> with
+<span class="math display">\[\begin{eqnarray*}
+\xi_j=\begin{cases} 1 \quad &amp;  \text{ if ${\boldsymbol \beta}_j$ is active} \\0 \quad &amp; \text{ if ${\boldsymbol \beta}_j$ is not active}
+\end{cases}.
+\end{eqnarray*}\]</span>
+The conjugate priors are considered as follows:
+<span class="math display">\[\begin{eqnarray*}
+&amp;&amp; \pi({\bf B}_{{\boldsymbol \xi}}|{\boldsymbol \Sigma},{\boldsymbol \xi}) \sim \mathcal{MN}({\bf 0},{\bf H}_{{\boldsymbol \xi}}, {\boldsymbol \Sigma})\\
+&amp;&amp; \pi({\boldsymbol \Sigma}) \sim \mathcal{IW}({\bf Q},\delta)\\
+&amp;&amp; \pi({\boldsymbol \xi}) \overset{ind}{\sim} \prod_{j=1}^{p} \text{Ber}(\omega_j),
+\end{eqnarray*}\]</span>
+where <span class="math inline">\({\bf Q}\)</span>, <span class="math inline">\({\bf H}_{{\boldsymbol \xi}}\)</span> and <span class="math inline">\(\delta\)</span> are hyperparameters.
+Then, by Bayesian theorem, the marginal posterior distribution can be obtained by
+<span class="math display" id="eq:1">\[\begin{eqnarray*}
+&amp;&amp;m({\boldsymbol \xi}|{\bf Y}) \propto m({\bf Y}|{\boldsymbol \xi})\pi({\boldsymbol \xi})\\
+&amp;=&amp;\iint f({\bf Y}|{\bf B}_{{\boldsymbol \xi}},{\boldsymbol \Sigma})\pi({\bf B}_{{\boldsymbol \xi}}|{\boldsymbol \Sigma}, {\boldsymbol \xi}) \pi({\boldsymbol \Sigma}) d{\bf B}d{\boldsymbol \Sigma}\pi({\boldsymbol \xi})\\
+&amp;=&amp;\iint (2\pi)^{-\frac{nq}{2}}|{\boldsymbol \Sigma}|^{-\frac{n}{2}}\exp \left[-\frac{1}{2}{\text tr}\{({\bf Y}-{\bf X}_{{\boldsymbol \xi}}{\bf B}_{{\boldsymbol \xi}})^{{\top}}({\bf Y}-{\bf X}_{{\boldsymbol \xi}}{\bf B}_{{\boldsymbol \xi}})\}{\boldsymbol \Sigma}^{-1} \right]\times\\
+&amp;&amp;(2\pi)^{-\frac{|{\boldsymbol \xi}| q}{2}}|{\boldsymbol \Sigma}|^{-\frac{|{\boldsymbol \xi}|}{2}} {|{\bf H}_{{\boldsymbol \xi}}}|^{-\frac{q}{2}}\exp \left[\frac{1}{2}{\text tr}\{{\bf B}_{{\boldsymbol \xi}}^{{\top}}{\bf H}_{{\boldsymbol \xi}}^{-1}{\bf B}_{{\boldsymbol \xi}}{\boldsymbol \Sigma}^{-1} \}  \right] \times \\
+&amp;&amp; |{\bf Q}|^{\frac{\delta}{2}}2^{-\frac{1}{2}\delta q}{\boldsymbol \xi}_q^{-1}(\frac{\delta}{2}) |{\boldsymbol \Sigma}|^{-\frac{\delta + q + 1}{2}}\exp\{-\frac{1}{2}{\text tr}({\bf Q}{\boldsymbol \Sigma}^{-1}) \}d{\bf B}_{{\boldsymbol \xi}} d{\boldsymbol \Sigma}\pi({\boldsymbol \xi})\\
+&amp;\propto&amp; (2\pi)^{-\frac{|{\boldsymbol \xi}| q}{2}}{|{\bf H}_{{\boldsymbol \xi}}|}^{-\frac{q}{2}}\iint |{\boldsymbol \Sigma}|^{-\frac{1}{2}(n+|{\boldsymbol \xi}|+\delta+q+1)}\exp\{-\frac{1}{2}{\text tr}({\bf Q}{\boldsymbol \Sigma}^{-1}) \} \\
+&amp;&amp;\exp\left[-\frac{1}{2}{\text tr}\left\{\left({\bf B}_{{\boldsymbol \xi}}^{{\top}}({\bf X}_{{\boldsymbol \xi}}^{{\top}}{\bf X}_{{\boldsymbol \xi}}+{\bf H}_{{\boldsymbol \xi}}^{-1}){\bf B}_{{\boldsymbol \xi}}-2{\bf B}_{{\boldsymbol \xi}}^{{\top}}{\bf X}_{{\boldsymbol \xi}}^{{\top}}{\bf Y}\right){\boldsymbol \Sigma}^{-1}\right\}\right]\times \\
+&amp;&amp;\exp\left[-\frac{1}{2}{\text tr}\left\{{\bf Y}^{{\top}}{\bf Y}{\boldsymbol \Sigma}^{-1} \right\}  \right]d{\bf B}_{{\boldsymbol \xi}} d{\boldsymbol \Sigma}\pi({\boldsymbol \xi})\\
+&amp;=&amp; (2\pi)^{-\frac{|{\boldsymbol \xi}| q}{2}}{|{\bf H}_{{\boldsymbol \xi}}|}^{-\frac{q}{2}}\iint |{\boldsymbol \Sigma}|^{-\frac{1}{2}(n+|{\boldsymbol \xi}|+\delta+q+1)}\exp\{-\frac{1}{2}{\text tr}[({\bf Y}^{{\top}}{\bf Y}+{\bf Q}){\boldsymbol \Sigma}^{-1}]\}\times \\
+&amp;&amp;\exp\left[-\frac{1}{2}{\text tr}\left\{\left({\bf B}_{{\boldsymbol \xi}}^{{\top}}{\bf K}_{{\boldsymbol \xi}}{\bf B}_{{\boldsymbol \xi}}-2{\bf B}_{{\boldsymbol \xi}}^{{\top}}{\bf K}_{{\boldsymbol \xi}}{\bf K}_{{\boldsymbol \xi}}^{-1}{\bf X}_{{\boldsymbol \xi}}^{{\top}}{\bf Y}\right){\boldsymbol \Sigma}^{-1}\right\}\right]d{\bf B}_{{\boldsymbol \xi}} d{\boldsymbol \Sigma}\pi({\boldsymbol \xi})\\
+&amp;=&amp; (2\pi)^{-\frac{|{\boldsymbol \xi}| q}{2}}{|{\bf H}_{{\boldsymbol \xi}}|}^{-\frac{q}{2}}\iint |{\boldsymbol \Sigma}|^{-\frac{1}{2}(n+|{\boldsymbol \xi}|+\delta+q+1)}\times\\
+&amp;&amp;\exp\{-\frac{1}{2}{\text tr}[({\bf Y}^{{\top}}{\bf Y}-\tilde{{\bf B}}_{{\boldsymbol \xi}}^{{\top}}{\bf K}_{{\boldsymbol \xi}}\tilde{{\bf B}}_{{\boldsymbol \xi}} +{\bf Q}){\boldsymbol \Sigma}^{-1}]\}\times \\
+&amp;&amp;\exp\left[-\frac{1}{2}{\text tr}\left\{\left( ({\bf B}_{{\boldsymbol \xi}} - \tilde{{\bf B}}_{{\boldsymbol \xi}})^{{\top}} {\bf K}_{{\boldsymbol \xi}}({\bf B}_{{\boldsymbol \xi}} - \tilde{{\bf B}}_{{\boldsymbol \xi}})\right){\boldsymbol \Sigma}^{-1}\right\}\right]d{\bf B}_{{\boldsymbol \xi}} d{\boldsymbol \Sigma}\pi({\boldsymbol \xi})\\
+&amp;=&amp; (2\pi)^{-\frac{|{\boldsymbol \xi}| q}{2}}{|{\bf H}_{{\boldsymbol \xi}}|}^{-\frac{q}{2}} (2\pi)^{\frac{|{\boldsymbol \xi}| q}{2}} |{\bf K}_{{\boldsymbol \xi}}|^{-\frac{q}{2}} \times \\
+&amp;&amp;\int |{\boldsymbol \Sigma}|^{\frac{|{\boldsymbol \xi}|}{2}} |{\boldsymbol \Sigma}|^{-\frac{1}{2}(n+|{\boldsymbol \xi}|+\delta+q+1)}\exp\{-\frac{1}{2}{\text tr}[({\bf Y}^{{\top}}{\bf Y}-\tilde{{\bf B}}_{{\boldsymbol \xi}}^{{\top}}{\bf K}_{{\boldsymbol \xi}}\tilde{{\bf B}}_{{\boldsymbol \xi}} +{\bf Q}){\boldsymbol \Sigma}^{-1}]\}  d{\boldsymbol \Sigma}\pi({\boldsymbol \xi})\\
+&amp;=&amp; {|{\bf H}_{{\boldsymbol \xi}}|}^{-\frac{q}{2}} |{\bf K}_{{\boldsymbol \xi}}|^{-\frac{q}{2}}
+\int |{\boldsymbol \Sigma}|^{-\frac{1}{2}(n+\delta+q+1)}\times\\
+&amp;&amp;\exp\{-\frac{1}{2}{\text tr}[({\bf Y}^{{\top}}{\bf Y}-{\bf Y}^{{\top}}{\bf X}_{{\boldsymbol \xi}}{\bf K}_{{\boldsymbol \xi}}^{-1}{\bf X}_{{\boldsymbol \xi}}^{{\top}}{\bf Y}+{\bf Q}){\boldsymbol \Sigma}^{-1}]\}  d{\boldsymbol \Sigma}\pi({\boldsymbol \xi})\\
+&amp;=&amp; {|{\bf H}_{{\boldsymbol \xi}}{\bf K}_{{\boldsymbol \xi}}|}^{-\frac{q}{2}}
+\int |{\boldsymbol \Sigma}|^{-\frac{1}{2}(n+\delta+q+1)}\times\\
+&amp;&amp;\exp\{-\frac{1}{2}{\text tr}[({\bf Y}^{{\top}}({\bf I}_n - {\bf X}_{{\boldsymbol \xi}}{\bf K}_{{\boldsymbol \xi}}^{-1}{\bf X}_{{\boldsymbol \xi}}^{{\top}}){\bf Y}+{\bf Q}){\boldsymbol \Sigma}^{-1}]\}  d{\boldsymbol \Sigma}\pi({\boldsymbol \xi})\\
+&amp;\propto&amp; {|{\bf H}_{{\boldsymbol \xi}}{\bf K}_{{\boldsymbol \xi}}|}^{-\frac{q}{2}}|{\bf Y}^{{\top}}({\bf I}_n - {\bf X}_{{\boldsymbol \xi}}{\bf K}_{{\boldsymbol \xi}}^{-1}{\bf X}_{{\boldsymbol \xi}}^{{\top}}){\bf Y}+{\bf Q}|^{-\frac{n+\delta}{2}} \pi({\boldsymbol \xi})\\
+&amp;\equiv&amp;g({\boldsymbol \xi}|{\bf Y}),
+\tag{2.1}
+\end{eqnarray*}\]</span>
+where <span class="math inline">\({\bf K}_{{\boldsymbol \xi}} = {\bf X}_{{\boldsymbol \xi}}^{{\top}}{\bf X}_{{\boldsymbol \xi}}+{\bf H}_{{\boldsymbol \xi}}^{-1}\)</span> and <span class="math inline">\(g({\boldsymbol \xi}|{\bf Y})\)</span> is the proportional form of <span class="math inline">\(\pi({\boldsymbol \xi}|{\bf Y})\)</span>. <span class="citation">(Brown and Vannucci <a href="#ref-Brown">1998</a>)</span> set <span class="math inline">\({\bf Q}= k{\bf I}_q\)</span> and <span class="math inline">\({\bf H}_{{\boldsymbol \xi}} = c({\bf X}_{{\boldsymbol \xi}}^{{\top}}{\bf X}_{{\boldsymbol \xi}})^{-1}\)</span> and <span class="math inline">\(\omega_j = \omega\)</span>, then <span class="math inline">\(\pi({\boldsymbol \xi}) = \prod_{j=1}^{p}\omega_j^{\xi_j}(1-\omega_j)^{1-\xi_j} = \omega^{|{\boldsymbol \xi}|}(1-\omega)^{p-|{\boldsymbol \xi}|}\)</span>. Apply <span class="math inline">\({\bf Q}= k{\bf I}_q\)</span> and <span class="math inline">\({\bf H}_{{\boldsymbol \xi}} = c({\bf X}_{{\boldsymbol \xi}}^{{\top}}{\bf X}_{{\boldsymbol \xi}})^{-1}\)</span> into <a href="multivariate-bayesian-variable-selection-and-prediction.html#eq:1">(2.1)</a>, hence we have
+<span class="math display">\[\begin{eqnarray*}
+\log g({\boldsymbol \xi}|{\bf Y}) &amp;=&amp; -\frac{n+\delta}{2}\log|k{\bf I}_{q} + {\bf Y}^{{\top}}{\bf Y}- \frac{c}{c+1}{\bf Y}^{{\top}}{\bf X}_{{\boldsymbol \xi}}({\bf X}_{{\boldsymbol \xi}}^{{\top}}{\bf X}_{{\boldsymbol \xi}}^{-1}){\bf X}_{{\boldsymbol \xi}}^{{\top}}{\bf Y}|-\\
+&amp;&amp;\frac{q|{\boldsymbol \xi}|}{2}\log(c+1)+ |{\boldsymbol \xi}|\log\omega+(p-|{\boldsymbol \xi}|)\log(1-\omega).
+\end{eqnarray*}\]</span>
+Exhaustive computation of <span class="math inline">\(g({\boldsymbol \xi}|{\bf Y})\)</span> for <span class="math inline">\(2^p\)</span> values of <span class="math inline">\({\boldsymbol \xi}\)</span> becomes prohibitive even in a super computer when <span class="math inline">\(p\)</span> is larger than 40. In this circumstances, using MCMC sampling to explore marginal posterior is possible. <span class="citation">(Brown and Vannucci <a href="#ref-Brown">1998</a>)</span> use Gibbs sampler to generate each <span class="math inline">\({\boldsymbol \xi}\)</span> value component-wise from full conditional distributions <span class="math inline">\(\pi(\xi_j|{\boldsymbol \xi}_{-j},{\bf Y})\)</span>, where <span class="math inline">\({\boldsymbol \xi}_{-j} = {\boldsymbol \xi}\setminus {\xi_j}\)</span> . It is easy to show that
+<span class="math display">\[\begin{eqnarray*}
+\pi(\xi_j = 1|{\boldsymbol \xi}_{-j},{\bf Y}) = \frac{\theta_j}{\theta_j+1},
+\end{eqnarray*}\]</span>
+where
+<span class="math display">\[\begin{eqnarray*}
+\theta_j = \frac{g(\xi_j = 1, {\boldsymbol \xi}_{-j}|{\bf Y})}{g(\xi_j = 0, {\boldsymbol \xi}_{-j}|{\bf Y})}.
+\end{eqnarray*}\]</span>
+The complete algorithm of <span class="citation">(Brown and Vannucci <a href="#ref-Brown">1998</a>)</span> is described in Algorithm 3:</p>
+<p><img src="alg-brown.png" /></p>
+<p>For the hyperparameter, we follow the same setting with <span class="citation">(Brown and Vannucci <a href="#ref-Brown">1998</a>)</span>, which are <span class="math inline">\(\delta = 2+q, \omega = 20/p, k = 2\)</span> and <span class="math inline">\(c = 10\)</span>. Note that since our definition of inverse-wishart distribution is different from that of <span class="citation">(Brown and Vannucci <a href="#ref-Brown">1998</a>)</span>, the values of <span class="math inline">\(q\)</span> and <span class="math inline">\(k\)</span> we set here are after adjustment to make them consistent with <span class="citation">(Brown and Vannucci <a href="#ref-Brown">1998</a>)</span>.</p>
+
+</div>
+<h3>References</h3>
+<div id="refs" class="references">
+<div id="ref-Brown">
+<p>Brown, P. J., and M. Vannucci. 1998. “Multivariate Bayesian Variable Selection and Prediction.” <em>Journal of the Royal Statistical Society: Series B (Methodological)</em>, 627–41.</p>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="references.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"download": ["Brown.pdf", "Brown.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
