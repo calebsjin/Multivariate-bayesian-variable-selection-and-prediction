@@ -12,4 +12,4 @@ description: ""
 
 # Foreword
 
-I am [Caleb Jin](https://www.sjin.name/). After I read this paper, **[Multivariate Bayesian variable selection and prediction](https://rss.onlinelibrary.wiley.com/doi/abs/10.1111/1467-9868.00144)** [@Brown], I write down the nodes of the key idea and R code to realize it.
+I am [Caleb Jin](https://www.sjin.name/). After I read this paper, **[Multivariate Bayesian Variable Selection and Prediction](https://rss.onlinelibrary.wiley.com/doi/abs/10.1111/1467-9868.00144)** [@Brown], I write down the nodes of the key idea and R code to realize it.
